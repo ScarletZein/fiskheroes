@@ -1,0 +1,3506 @@
+﻿{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:agent_liberty_layer1",
+    "layer2": "fiskheroes:agent_liberty_layer2",
+    "helmet": "fiskheroes:agent_liberty_helmet",
+    "blade": "fiskheroes:agent_liberty_blade"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "helmet",
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "custom": {
+    "fiskheroes:shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "blade",
+      "offset": [3.0, 9.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "curve": [0.0, 0.0],
+      "mirror": false,
+      "large": false,
+      "data": "fiskheroes:blade_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:anti_monitor_layer1",
+    "layer2": "fiskheroes:anti_monitor_layer2",
+    "layer3": "fiskheroes:anti_monitor_layer3",
+    "lights": "fiskheroes:anti_monitor_lights",
+    "tubes": "fiskheroes:anti_monitor_tubes"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": {
+        "wornChestplate": {
+          "fiskheroes:anti_monitor": "layer3"
+        }
+      },
+      "CHESTPLATE": "layer1",
+      "BOOTS": "layer3"
+    },
+    "default": "layer2"
+  },
+  "lights": {
+    "renderLayer": {
+      "CHESTPLATE": "lights"
+    },
+    "default": "null"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "animations": {
+    "BLOCKING": null,
+    "CHARGED_BEAM": null
+  },
+  "custom": {
+    "fiskheroes:model": {
+      "applicable": ["CHESTPLATE"],
+      "modelType": "fiskheroes:anti_monitor_tubes",
+      "texture": ["null", "tubes"],
+      "anchor": "rightArm",
+      "opacity": 1.0,
+      "mirror": true
+    },
+    "fiskheroes:energy_projection": {
+      "color": "0xFF1000",
+      "anchor": "body",
+      "beams": [
+        {
+          "firstPerson": [0.0, 6.0, 0.0],
+          "offset": [0.0, 5.0, -4.0],
+          "size": [4.0, 4.0]
+        }
+      ],
+      "renderer": "fiskheroes:energy_projection",
+      "particleType": "fiskheroes:impact_energy_projection"
+    },
+    "fiskheroes:charged_beam": {
+      "color": "0xFF1000",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-4.5, 3.75, -8.0],
+          "offset": [-0.5, 9.0, 0.0],
+          "size": [3, 3]
+        }
+      ],
+      "renderer": "fiskheroes:energy_projection",
+      "particleType": "fiskheroes:impact_antimatter"
+    },
+    "fiskheroes:arm_animation": {
+      "dataRArmPose": "fiskheroes:beam_charge"
+    },
+    "fiskheroes:trail": {
+      "type": "fiskheroes:anti_monitor",
+      "conditionals": ["vars:GROWING"]
+    },
+    "fiskheroes:invisibility": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "opacityMin": 0.0,
+      "opacityMax": 1.0,
+      "data": "fiskheroes:shadowform_timer"
+    },
+    "fiskheroes:particle_cloud": {
+      "particles": "fiskheroes:shadow_smoke",
+      "conditionals": ["vars:SHADOWFORM"]
+    },
+    "fiskheroes:forcefield": {
+      "color": "0xFFD3A8",
+      "rotation": [0.0, 0.0, 0.0],
+      "translation": [0.0, 6.0, 0.0],
+      "scale": [1.25, 1.25, 1.25],
+      "shape": [36, 18],
+      "data": "entity.getInterpolatedData('fiskheroes:shield_blocking_timer') * 0.15"
+    }
+  },
+  "vars": {
+    "GROWING": "entity.getData('fiskheroes:size_state') > 0",
+    "SHADOWFORM": "entity.getData('fiskheroes:shadowform')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:ant_man_layer1",
+    "layer2": "fiskheroes:ant_man_layer2",
+    "lights": "fiskheroes:ant_man_lights",
+    "lights_big": "fiskheroes:ant_man_lights_big"
+  },
+  "lights": {
+    "renderLayer": {
+      "LEGGINGS": "null",
+      "BOOTS": "null"
+    },
+    "vars:BIG": {
+      "true": "lights_big"
+    },
+    "default": "lights"
+  },
+  "vars": {
+    "BIG": "entity.getData('fiskheroes:dyn/giant_mode')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:arrow_layer1",
+    "layer2": "fiskheroes:arrow_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:arsenal_layer1",
+    "layer2": "fiskheroes:arsenal_layer2",
+    "arrow": "fiskheroes:arrow/arsenal",
+    "quiver": "fiskheroes:quiver/arsenal",
+    "quiver_auto": "fiskheroes:quiver/arsenal_auto"
+  },
+  "custom": {
+    "fiskheroes:archery": {
+      "textureArrow": "arrow",
+      "textureQuiver": "quiver",
+      "textureAutoQuiver": "quiver_auto"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:atom_layer1",
+    "layer2": "fiskheroes:atom_layer2",
+    "lights": "fiskheroes:atom_lights",
+    "visor": "fiskheroes:atom_visor.tx.json"
+  },
+  "lights": {
+    "renderLayer": {
+      "CHESTPLATE": "lights"
+    },
+    "default": "null"
+  },
+  "custom": {
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:atom",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET"],
+      "texture": "visor",
+      "opacity": 0.85,
+      "data": 1.0
+    },
+    "fiskheroes:booster|boots": {
+      "applicable": ["BOOTS"],
+      "icon": "fiskheroes:deep_blue_fire_layer_%s",
+      "anchor": "rightLeg",
+      "offset": [0.0, 7.0, 2.0],
+      "rotation": [15.0, 0.0, 0.0],
+      "scale": [1.5, 4.0],
+      "opacity": 0.7,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|back": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:deep_blue_fire_layer_%s",
+      "anchor": "body",
+      "offset": [1.5, 6.0, 1.75],
+      "rotation": [15.0, 0.0, 5.0],
+      "scale": [1.5, 4.5],
+      "opacity": 0.7,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    }
+  },
+  "vars": {
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_masked",
+  "resources": {
+    "layer1": "fiskheroes:atom_smasher_layer1",
+    "layer2": "fiskheroes:atom_smasher_layer2",
+    "mask": "fiskheroes:atom_smasher_mask.tx.json"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:august_heart_comics_layer1",
+    "layer2": "fiskheroes:august_heart_comics_layer2",
+    "pants": "fiskheroes:august_heart_comics_pants"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:august_heart_comics": "layer2"
+        },
+        "default": "pants"
+      }
+    },
+    "default": "layer1"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_comics_lime",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:batman_dceu_layer1",
+    "layer2": "fiskheroes:batman_dceu_layer2",
+    "cape": "fiskheroes:batman_dceu_cape"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 22,
+      "data": "fiskheroes:wing_animation_timer"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 0.7,
+          "offset": [-4.5, 10.5, 0.5],
+          "rotation": [100.0, 5.0, 0.0]
+        }
+      ]
+    },
+    "fiskheroes:equipment_wheel": {
+      "color": "0x000000"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:black_canary_layer1",
+    "layer2": "fiskheroes:black_canary_layer2",
+    "mask": "fiskheroes:black_canary_mask",
+    "chest": "fiskheroes:black_canary_chest"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "mask",
+      "CHESTPLATE": {
+        "wornHelmet": {
+          "fiskheroes:black_canary": "layer1"
+        },
+        "default": "chest"
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["HELMET", "CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "extrude": 1,
+      "offset": 1
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["LEGGINGS"],
+      "items": [
+        {
+          "anchor": "rightLeg",
+          "scale": 1.0,
+          "offset": [-2.5, 1.0, 0.5],
+          "rotation": [90.0, 180.0, -2.0]
+        },
+        {
+          "anchor": "leftLeg",
+          "scale": 1.0,
+          "offset": [2.5, 1.0, 0.5],
+          "rotation": [90.0, 180.0, 2.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:black_canary_dinah_layer1",
+    "layer2": "fiskheroes:black_canary_dinah_layer2",
+    "mask": "fiskheroes:black_canary_dinah_mask",
+    "chest": "fiskheroes:black_canary_dinah_chest"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "mask",
+      "CHESTPLATE": {
+        "wornHelmet": {
+          "fiskheroes:black_canary_dinah": "layer1"
+        },
+        "default": "chest"
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["HELMET", "CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "extrude": 1,
+      "offset": 1
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:black_lightning_layer1",
+    "layer2": "fiskheroes:black_lightning_layer2",
+    "layer1_lights": "fiskheroes:black_lightning_layer1_lights",
+    "layer2_lights": "fiskheroes:black_lightning_layer2_lights",
+    "visor": "fiskheroes:black_lightning_visor"
+  },
+  "lights": {
+    "renderLayer": {
+      "LEGGINGS": "layer2_lights"
+    },
+    "default": "layer1_lights"
+  },
+  "custom": {
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:black_lightning",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET"],
+      "texture": "visor",
+      "opacity": 1.0,
+      "data": "1 - 0.7 * entity.getInterpolatedData('fiskheroes:mask_open_timer2')"
+    },
+    "fiskheroes:lightning_attack": {
+      "color": "0x0049FF",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-8.0, 4.5, -10.0],
+          "offset": [-0.5, 9.0, 0.0],
+          "size": [0.75, 0.75]
+        }
+      ],
+      "renderer": "fiskheroes:lightning_cast"
+    }
+  },
+  "vars": {
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:black_manta_dceu_layer1",
+    "layer2": "fiskheroes:black_manta_dceu_layer2",
+    "lights": "fiskheroes:black_manta_dceu_lights",
+    "jetpack": "fiskheroes:black_manta_dceu_jetpack",
+    "jetpack_lights": "fiskheroes:black_manta_dceu_jetpack_lights",
+    "helmet": "fiskheroes:black_manta_dceu_helmet",
+    "helmet_lights": "fiskheroes:black_manta_dceu_helmet_lights",
+    "eyes": "fiskheroes:black_manta_dceu_eyes",
+    "blade": "fiskheroes:black_manta_dceu_blade"
+  },
+  "lights": {
+    "renderLayer": {
+      "LEGGINGS": "null"
+    },
+    "default": "lights"
+  },
+  "custom": {
+    "fiskheroes:model": {
+      "applicable": ["HELMET"],
+      "modelType": "fiskheroes:black_manta_helmet",
+      "texture": ["helmet", "helmet_lights"],
+      "anchor": "head",
+      "opacity": 1.0
+    },
+    "fiskheroes:mantapack": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["jetpack", "jetpack_lights"],
+      "icon": "fiskheroes:red_fire_layer_%s",
+      "scale": [1.75, 3.75],
+      "opacity": 0.7,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster": {
+      "applicable": ["BOOTS"],
+      "icon": "fiskheroes:red_fire_layer_%s",
+      "anchor": "rightLeg",
+      "offset": [0.0, 8.5, 2.0],
+      "rotation": [20.0, 0.0, 0.0],
+      "scale": [1.5, 4.0],
+      "opacity": 0.7,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:black_manta_dceu",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:particles|eyes": {
+      "particleType": "fiskheroes:black_manta_dceu_eyes",
+      "conditionals": ["vars:CHARGING"]
+    },
+    "fiskheroes:charged_beam": {
+      "color": "0xFF2227",
+      "anchor": "head",
+      "beams": [
+        {
+          "firstPerson": [3.0, 0.0, 2.0],
+          "offset": [3.0, -4.0, -4.0],
+          "size": [3.0, 2.0]
+        }
+      ],
+      "mirror": true,
+      "renderer": "fiskheroes:charged_beam",
+      "particleType": "fiskheroes:impact_charged_beam"
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET"],
+      "texture": ["null", "eyes"],
+      "opacity": 1.0,
+      "data": "fiskheroes:beam_charge"
+    },
+    "fiskheroes:shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "blade",
+      "offset": [3.25, 8.5, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "curve": [0.0, 0.0],
+      "mirror": false,
+      "large": false,
+      "data": "fiskheroes:blade_timer"
+    }
+  },
+  "vars": {
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')",
+    "CHARGING": "entity.getData('fiskheroes:beam_charging') && entity.getData('fiskheroes:beam_charge') < 1"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:black_panther_layer1",
+    "layer2": "fiskheroes:black_panther_layer2",
+    "claws": "fiskheroes:black_panther_claws"
+  },
+  "custom": {
+    "fiskheroes:overlay": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "claws",
+      "opacity": 1.0,
+      "data": 1.0,
+      "conditionals": ["vars:CLAWS"]
+    }
+  },
+  "vars": {
+    "CLAWS": "entity.getInterpolatedData('fiskheroes:blade')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_layer1",
+    "layer2": "fiskheroes:captain_america_layer2"
+  },
+  "custom": {
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 1.0,
+          "offset": [0.0, 5.0, 2.75],
+          "rotation": [90.0, -180.0, 0.0]
+        }
+      ],
+      "offsetFrom": {
+        "QUIVER": [-0.5, 0.0, 2.86]
+      }
+    }
+  }
+}
+{
+  "parent": "fiskheroes:captain_america",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_aou_layer1",
+    "layer2": "fiskheroes:captain_america_aou_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:captain_america",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_canada_layer1",
+    "layer2": "fiskheroes:captain_america_canada_layer2"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "captain_america_museum_3"
+  }
+}
+{
+  "parent": "fiskheroes:captain_america",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_museum_layer1",
+    "layer2": "fiskheroes:captain_america_museum_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:captain_america",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_nomad_layer1",
+    "layer2": "fiskheroes:captain_america_nomad_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_sam_layer1",
+    "layer2": "fiskheroes:captain_america_sam_layer2",
+    "wings": "fiskheroes:captain_america_sam_wings",
+    "jetpack": "fiskheroes:captain_america_sam_jetpack",
+    "jetpack_lights": "fiskheroes:captain_america_sam_jetpack_lights"
+  },
+  "custom": {
+    "fiskheroes:wings": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "wings",
+      "yOffset": -1,
+      "dataWings": "fiskheroes:wing_animation_timer",
+      "dataShield": 0.0
+    },
+    "fiskheroes:model": {
+      "applicable": ["CHESTPLATE"],
+      "modelType": "fiskheroes:falcon_cap_jetpack",
+      "texture": ["jetpack", "jetpack_lights"],
+      "anchor": "body",
+      "opacity": 1.0
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:cap_falcon",
+      "conditionals": ["vars:BOOSTING"]
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 1.0,
+          "offset": [0.0, 4.5, 3.75],
+          "rotation": [95.0, -180.0, 0.0]
+        }
+      ],
+      "offsetFrom": {
+        "QUIVER": [-0.5, 0.75, 2.3]
+      }
+    },
+    "fiskheroes:booster": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:blue_fire_layer_%s",
+      "anchor": "body",
+      "offset": [0.0, 5.0, 2.6],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [1.75, 3.0],
+      "opacity": 1.0,
+      "mirror": false,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|sides": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:blue_fire_layer_%s",
+      "anchor": "body",
+      "offset": [0.75, 5.0, 2.6],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [1.5, 2.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    }
+  },
+  "vars": {
+    "BOOSTING": "entity.getData('fiskheroes:jetpacking_timer') > 0"
+  }
+}
+{
+  "parent": "fiskheroes:captain_america",
+  "resources": {
+    "layer1": "fiskheroes:captain_america_stealth_layer1",
+    "layer2": "fiskheroes:captain_america_stealth_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "jacket": "fiskheroes:captain_cold_jacket",
+    "jacket_pants": "fiskheroes:captain_cold_jacket_pants",
+    "pants": "fiskheroes:captain_cold_pants",
+    "pants_jacket": "fiskheroes:captain_cold_pants_jacket",
+    "boots": "fiskheroes:captain_cold_boots",
+    "lights": "fiskheroes:captain_cold_lights"
+  },
+  "texture": {
+    "renderLayer": {
+      "CHESTPLATE": {
+        "wornLeggings": {
+          "fiskheroes:captain_cold": "jacket_pants"
+        },
+        "default": "jacket"
+      },
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:captain_cold": "pants_jacket"
+        },
+        "default": "pants"
+      }
+    },
+    "default": "boots"
+  },
+  "lights": {
+    "renderLayer": {
+      "CHESTPLATE": {
+        "wornLeggings": {
+          "fiskheroes:captain_cold": "lights"
+        },
+        "default": "null"
+      },
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:captain_cold": "null"
+        },
+        "default": "lights"
+      }
+    },
+    "default": "null"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cold_gun": {
+      "color": "0x4CB5FF",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-4.75, 3.0, -13.0],
+          "offset": [-0.6, 19.0, -1.5],
+          "size": [2.0, 2.0]
+        }
+      ],
+      "renderer": "fiskheroes:cold_beam"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:chronos_layer1",
+    "layer2": "fiskheroes:chronos_layer2",
+    "cape": "fiskheroes:chronos_cape"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 21
+    },
+    "fiskheroes:energy_bolt": {
+      "color": "0x6EFF00"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 0.7,
+          "offset": [-3.5, 2.0, 3.0],
+          "rotation": [0.0, -90.0, 60.0]
+        }
+      ],
+      "offsetFrom": {
+        "QUIVER": [0.0, 0.0, 3.5]
+      }
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:citizen_steel_layer1",
+    "layer2": "fiskheroes:citizen_steel_layer2",
+    "metal": "fiskheroes:citizen_steel_metal"
+  },
+  "custom": {
+    "fiskheroes:metal_heat": {
+      "applicable": ["HELMET", "CHESTPLATE"],
+      "includeEffects": [],
+      "texture": "metal",
+      "data": "fiskheroes:metal_heat"
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET", "CHESTPLATE"],
+      "texture": "metal",
+      "opacity": 1.0,
+      "data": "fiskheroes:dyn/steel_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:colossus_xmen_layer1",
+    "layer2": "fiskheroes:colossus_xmen_layer2",
+    "metal": "fiskheroes:colossus_xmen_metal"
+  },
+  "custom": {
+    "fiskheroes:metal_heat": {
+      "applicable": ["HELMET", "CHESTPLATE"],
+      "includeEffects": [],
+      "texture": "metal",
+      "data": "fiskheroes:metal_heat"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:crossbones_layer1",
+    "layer2": "fiskheroes:crossbones_layer2",
+    "gauntlets": "fiskheroes:crossbones_gauntlets.tx.json"
+  },
+  "custom": {
+    "fiskheroes:arm_overlay": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "gauntlets",
+      "offset": [0.0, 1.5, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "side": "RIGHT",
+      "data": "(1 - entity.getInterpolatedData('fiskheroes:punch_charge')) * entity.getInterpolatedData('fiskheroes:punchmode_timer')"
+    },
+    "fiskheroes:arm_overlay|left": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "gauntlets",
+      "offset": [0.0, 0.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "side": "LEFT",
+      "data": 0.0
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:dark_archer_layer1",
+    "layer2": "fiskheroes:dark_archer_layer2",
+    "arrow": "fiskheroes:arrow/dark_archer",
+    "quiver": "fiskheroes:quiver/dark_archer"
+  },
+  "custom": {
+    "fiskheroes:archery": {
+      "textureArrow": "arrow",
+      "textureQuiver": "quiver"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_layer1",
+    "layer2": "fiskheroes:deadpool_xmen_layer2",
+    "sheath": "fiskheroes:sword_sheath"
+  },
+  "custom": {
+    "fiskheroes:deadpool_sheath": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "sheath"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 0.48,
+          "offset": [-5.1, -2.7, 2.64],
+          "rotation": [180.0, 90.0, -30.0]
+        },
+        {
+          "anchor": "body",
+          "scale": 0.48,
+          "offset": [5.1, -2.7, 2.64],
+          "rotation": [180.0, -90.0, 30.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:deadpool_xmen",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_elvis_layer1",
+    "layer2": "fiskheroes:deadpool_xmen_elvis_layer2",
+    "boots": "fiskheroes:deadpool_xmen_layer1",
+    "boots_pants": "fiskheroes:deadpool_xmen_elvis_boots_pants",
+    "hair1": "fiskheroes:deadpool_xmen_elvis_hair1",
+    "hair2": "fiskheroes:deadpool_xmen_elvis_hair2"
+  },
+  "texture": {
+    "renderLayer": {
+      "CHESTPLATE": "layer1",
+      "BOOTS": {
+        "wornLeggings": {
+          "fiskheroes:deadpool_xmen/elvis": "boots_pants"
+        },
+        "default": "boots"
+      }
+    },
+    "default": "layer2"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "deadpool_xmen_3"
+  },
+  "custom": {
+    "fiskheroes:ears": {
+      "applicable": ["CHESTPLATE"],
+      "angle": -10,
+      "inset": -0.11
+    },
+    "fiskheroes:opening_mask|hair1": {
+      "applicable": ["HELMET"],
+      "texture": "hair1",
+      "rotation": [-33.23, 0.0, 0.0],
+      "translation": [0.0, -3.53, -3.77],
+      "data": 1.0
+    },
+    "fiskheroes:opening_mask|hair2": {
+      "applicable": ["HELMET"],
+      "texture": "hair2",
+      "rotation": [-33.23, 0.0, 0.0],
+      "translation": [0.0, -6.08, -2.1],
+      "data": 1.0
+    }
+  }
+}
+{
+  "parent": "fiskheroes:deadpool_xmen",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_jackman_layer1",
+    "mask": "fiskheroes:deadpool_xmen_jackman_mask"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "deadpool_xmen_1",
+    "LEGGINGS": "deadpool_xmen_2",
+    "BOOTS": "deadpool_xmen_3"
+  },
+  "custom": {
+    "fiskheroes:model": {
+      "applicable": ["HELMET"],
+      "modelType": "fiskheroes:paper_mask",
+      "texture": "mask",
+      "anchor": "head",
+      "opacity": 1.0,
+      "mirror": false
+    }
+  }
+}
+{
+  "parent": "fiskheroes:deadpool_xmen",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_russia_layer1",
+    "layer2": "fiskheroes:deadpool_xmen_russia_layer2",
+    "boots": "fiskheroes:deadpool_xmen_layer1",
+    "pants": "fiskheroes:deadpool_xmen_layer2"
+  },
+  "texture": {
+    "renderLayer": {
+      "CHESTPLATE": "layer1",
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:deadpool_xmen/russia": "layer2"
+        },
+        "default": "pants"
+      },
+      "BOOTS": "boots"
+    },
+    "default": "layer2"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "deadpool_xmen_2",
+    "BOOTS": "deadpool_xmen_3"
+  }
+}
+{
+  "parent": "fiskheroes:deadpool_xmen",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_trainee_layer1"
+  },
+  "itemIcons": {
+    "HELMET": "deadpool_xmen_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "deadpool_xmen_2",
+    "BOOTS": "deadpool_xmen_3"
+  }
+}
+{
+  "parent": "fiskheroes:deadpool_xmen",
+  "resources": {
+    "layer1": "fiskheroes:deadpool_xmen_xforce_layer1",
+    "layer2": "fiskheroes:deadpool_xmen_xforce_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:doctor_octopus_layer1",
+    "layer2": "fiskheroes:doctor_octopus_layer2",
+    "boots": "fiskheroes:doctor_octopus_boots",
+    "pants": "fiskheroes:doctor_octopus_pants",
+    "segment": "fiskheroes:doctor_octopus_arm",
+    "claw": "fiskheroes:doctor_octopus_claw",
+    "claw_lights": "fiskheroes:doctor_octopus_claw_lights"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:doctor_octopus": "pants"
+        },
+        "default": "layer2"
+      },
+      "BOOTS": "boots"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:tentacles": {
+      "applicable": ["CHESTPLATE"],
+      "segmentLength": 1.8,
+      "segmentLinks": 16,
+      "segment": {
+        "modelType": "fiskheroes:ock_arm",
+        "texture": "segment"
+      },
+      "head": {
+        "modelType": "fiskheroes:ock_claw",
+        "texture": ["claw", "claw_lights"],
+        "animations": [
+          {
+            "animation": "fiskheroes:ock_claw",
+            "data": [
+              "1 - Math.min(entity.as('TENTACLE').getCaster().getInterpolatedData('fiskheroes:tentacle_extend_timer') * 2, 1)",
+              "entity.as('TENTACLE').getIndex()",
+              "entity.as('TENTACLE').getGrabTimer()",
+              "entity.as('TENTACLE').getStrikeTimer()"
+            ]
+          }
+        ]
+      },
+      "anchor": "body",
+      "tentacles": [
+        {
+          "offset": [2.0, -4.5, -2.0],
+          "direction": [13.0, 10.0, -10.0]
+        },
+        {
+          "offset": [-2.0, -4.5, -2.0],
+          "direction": [-13.0, 10.0, -10.0]
+        },
+        {
+          "offset": [2.0, -7.5, -2.0],
+          "direction": [13.0, -10.0, -10.0]
+        },
+        {
+          "offset": [-2.0, -7.5, -2.0],
+          "direction": [-13.0, -10.0, -10.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:doctor_strange_layer1",
+    "pants": "fiskheroes:doctor_strange_pants",
+    "pants_robes": "fiskheroes:doctor_strange_pants_robes",
+    "boots": "fiskheroes:doctor_strange_boots",
+    "cape": "fiskheroes:doctor_strange_cape"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:doctor_strange": "pants_robes"
+        },
+        "default": "pants"
+      },
+      "BOOTS": "boots"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    },
+    "fiskheroes:ears": {
+      "applicable": ["CHESTPLATE"],
+      "angle": -7,
+      "inset": -0.065
+    },
+    "fiskheroes:spellcasting": {
+      "colorGeneric": "0xFF8000",
+      "colorEarthCrack": "0xB366FF",
+      "colorAtmosphere": "0xFF8000",
+      "colorWhip": "0xFF4800"
+    },
+    "fiskheroes:arm_animation": {
+      "dataSwordPose": "fiskheroes:blade_timer"
+    },
+    "fiskheroes:spell": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:tao_mandala",
+      "offset": [-1.0, 3.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": 0.2,
+      "mirror": true,
+      "color": "0xFF4800",
+      "data": "fiskheroes:spellcast_timer"
+    },
+    "fiskheroes:spell|shield": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:tao_mandala",
+      "offset": [-4.0, 5.0, -1.0],
+      "rotation": [-15.0, 0.0, 60.0],
+      "scale": 0.6,
+      "mirror": false,
+      "color": "0xFF4800",
+      "data": "entity.getInterpolatedData('fiskheroes:shield_timer') * entity.getInterpolatedData('fiskheroes:shield_blocking_timer')"
+    },
+    "fiskheroes:spell|shield_idle": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:tao_mandala",
+      "offset": [-1.0, 6.0, 0.0],
+      "rotation": [0.0, 0.0, 10.0],
+      "scale": 0.3,
+      "mirror": true,
+      "color": "0xFF4800",
+      "data": "entity.getInterpolatedData('fiskheroes:shield_timer') * (1 - entity.getInterpolatedData('fiskheroes:shield_blocking_timer'))"
+    },
+    "fiskheroes:spell|sword": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:eldritch_sword",
+      "offset": [-1.0, 4.4, -4.0],
+      "rotation": [10.0, 0.0, 0.0],
+      "scale": 1.0,
+      "mirror": false,
+      "color": "0xFF4800",
+      "data": "fiskheroes:blade_timer"
+    },
+    "fiskheroes:spell|sword_handle": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:eldritch_sword_handle",
+      "offset": [-1.0, 4.4, -4.0],
+      "rotation": [10.0, 0.0, 0.0],
+      "scale": 1.0,
+      "mirror": false,
+      "color": "0xFF4800",
+      "data": "fiskheroes:blade_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:doctor_strange",
+  "resources": {
+    "layer1": "fiskheroes:doctor_strange_eye_layer1"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:doctor_strange/eye": "pants_robes"
+        },
+        "default": "pants"
+      },
+      "BOOTS": "boots"
+    },
+    "default": "layer1"
+  },
+  "itemIcons": {
+    "HELMET": "doctor_strange_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "doctor_strange_2",
+    "BOOTS": "doctor_strange_3"
+  }
+}
+{
+  "parent": "fiskheroes:falcon_civil_war",
+  "resources": {
+    "layer1": "fiskheroes:falcon_layer1",
+    "layer2": "fiskheroes:falcon_layer2",
+    "wings": "fiskheroes:falcon_wings",
+    "jetpack": "fiskheroes:falcon_jetpack",
+    "jetpack_lights": "fiskheroes:falcon_jetpack_lights"
+  },
+  "custom": {
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:falcon",
+      "conditionals": ["vars:BOOSTING"]
+    },
+    "fiskheroes:booster": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:orange_fire_layer_%s",
+      "anchor": "body",
+      "offset": [0.0, 4.25, 2.6],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [1.75, 3.0],
+      "opacity": 1.0,
+      "mirror": false,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|sides": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:orange_fire_layer_%s",
+      "anchor": "body",
+      "offset": [1.0, 4.25, 2.6],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [1.5, 2.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:falcon_civil_war_layer1",
+    "layer2": "fiskheroes:falcon_civil_war_layer2",
+    "wings": "fiskheroes:falcon_civil_war_wings",
+    "jetpack": "fiskheroes:falcon_civil_war_jetpack",
+    "jetpack_lights": "fiskheroes:falcon_civil_war_jetpack_lights"
+  },
+  "custom": {
+    "fiskheroes:wings": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "wings",
+      "dataWings": "fiskheroes:wing_animation_timer",
+      "dataShield": "fiskheroes:shield_blocking_timer"
+    },
+    "fiskheroes:model": {
+      "applicable": ["CHESTPLATE"],
+      "modelType": "fiskheroes:falcon_jetpack",
+      "texture": ["jetpack", "jetpack_lights"],
+      "anchor": "body",
+      "opacity": 1.0
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:falcon_cw",
+      "conditionals": ["vars:BOOSTING"]
+    },
+    "fiskheroes:booster": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:red_fire_layer_%s",
+      "anchor": "body",
+      "offset": [2.4, 5.0, 2.6],
+      "rotation": [0.0, -18.0, 0.0],
+      "scale": [1.75, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    }
+  },
+  "vars": {
+    "BOOSTING": "entity.getData('fiskheroes:jetpacking_timer') > 0"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:firestorm_layer1",
+    "layer2": "fiskheroes:firestorm_layer2"
+  },
+  "custom": {
+    "fiskheroes:flames": {
+      "applicable": ["CHESTPLATE"],
+      "requiresFullSuit": true,
+      "scaleRatio": 1,
+      "opacity": 0.7
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:firestorm",
+      "conditionals": ["vars:FLYING"]
+    }
+  },
+  "vars": {
+    "FLYING": "entity.getData('fiskheroes:jetpacking')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:firestorm_jax_layer1",
+    "layer2": "fiskheroes:firestorm_jax_layer2"
+  },
+  "custom": {
+    "fiskheroes:flames": {
+      "applicable": ["CHESTPLATE"],
+      "requiresFullSuit": true,
+      "scaleRatio": 0.95,
+      "opacity": 0.7
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:firestorm",
+      "conditionals": ["vars:FLYING"]
+    }
+  },
+  "vars": {
+    "FLYING": "entity.getData('fiskheroes:jetpacking')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:geomancer_layer1",
+    "layer2": "fiskheroes:geomancer_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:godspeed_comics_layer1",
+    "layer2": "fiskheroes:godspeed_comics_layer2",
+    "layer1_on": "fiskheroes:godspeed_comics_layer1_on",
+    "layer2_on": "fiskheroes:godspeed_comics_layer2_on",
+    "lights": "fiskheroes:godspeed_comics_lights",
+    "lights_layer1": "fiskheroes:godspeed_comics_lights_layer1",
+    "lights_layer2": "fiskheroes:godspeed_comics_lights_layer2"
+  },
+  "texture": {
+    "vars:SPEEDING": {
+      "true": {
+        "renderLayer": {
+          "LEGGINGS": "layer2_on"
+        },
+        "default": "layer1_on"
+      }
+    },
+    "renderLayer": {
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "lights": {
+    "vars:SPEEDING": {
+      "true": {
+        "renderLayer": {
+          "LEGGINGS": "lights_layer2"
+        },
+        "default": "lights_layer1"
+      }
+    },
+    "renderLayer": {
+      "CHESTPLATE": "lights"
+    },
+    "default": "null"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_comics_yellow",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:ears": {
+      "applicable": ["HELMET"],
+      "angle": 15,
+      "inset": 0.025
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:green_arrow_layer1",
+    "layer2": "fiskheroes:green_arrow_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:green_arrow",
+  "resources": {
+    "layer1": "fiskheroes:green_arrow_earthx_layer1",
+    "layer2": "fiskheroes:green_arrow_earthx_layer2",
+    "arrow": "fiskheroes:arrow/earthx",
+    "quiver": "fiskheroes:quiver/earthx",
+    "quiver_auto": "fiskheroes:quiver/earthx_auto"
+  },
+  "custom": {
+    "fiskheroes:archery": {
+      "textureArrow": "arrow",
+      "textureQuiver": "quiver",
+      "textureAutoQuiver": "quiver_auto"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:green_arrow_s4_layer1",
+    "layer2": "fiskheroes:green_arrow_s4_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:green_arrow",
+  "resources": {
+    "layer1": "fiskheroes:green_arrow_s5_layer1",
+    "layer2": "fiskheroes:green_arrow_s5_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:guardian_layer1",
+    "layer2": "fiskheroes:guardian_layer2",
+    "shield": "fiskheroes:guardian_shield"
+  },
+  "custom": {
+    "fiskheroes:shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "shield",
+      "offset": [4.25, 5.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "curve": [25.0, 35.0],
+      "mirror": false,
+      "large": false,
+      "data": "fiskheroes:shield_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:guardian",
+  "resources": {
+    "layer1": "fiskheroes:guardian_earthx_layer1",
+    "layer2": "fiskheroes:guardian_earthx_layer2",
+    "shield": "fiskheroes:guardian_earthx_shield"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "chest": "fiskheroes:harbinger_chest",
+    "pants": "fiskheroes:harbinger_pants",
+    "boots": "fiskheroes:harbinger_boots"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": "pants",
+      "BOOTS": "boots"
+    },
+    "default": "chest"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "extrude": 1,
+      "offset": 1
+    },
+    "fiskheroes:energy_projection": {
+      "color": "0x00A5FF",
+      "anchor": "body",
+      "beams": [
+        {
+          "firstPerson": [0.0, 6.0, 0.0],
+          "offset": [0.0, 5.0, -4.0],
+          "size": [4.0, 4.0]
+        }
+      ],
+      "renderer": "fiskheroes:energy_projection",
+      "particleType": "fiskheroes:impact_energy_projection"
+    },
+    "fiskheroes:glowerlay": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "includeEffects": ["fiskheroes:chest"],
+      "color": "0xFFFFFF",
+      "data": "fiskheroes:teleport_timer"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:harbinger_glow"
+    },
+    "fiskheroes:gravity_manipulation": {
+      "color": "0x00A5FF"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "jacket": "fiskheroes:heatwave_jacket",
+    "pants": "fiskheroes:heatwave_pants",
+    "boots": "fiskheroes:heatwave_boots"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": "pants",
+      "BOOTS": "boots"
+    },
+    "default": "jacket"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  }
+}
+{
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET"],
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  },
+  "animations": {
+    "PROPELLED_FLIGHT": "fiskheroes:flight_lean",
+    "BLOCKING": "fiskheroes:blocking",
+    "AIMING": "fiskheroes:aiming",
+    "AIMING_LEFT": "fiskheroes:aiming_left",
+    "SWORD_POSE": "fiskheroes:sword_pose",
+    "HEAT_VISION": "fiskheroes:ocular_beam",
+    "CHARGED_BEAM": "fiskheroes:ocular_beam",
+    "ENERGY_PROJECTION": "fiskheroes:dual_hand_beam"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "texture": {
+    "renderLayer": {
+      "HELMET": {
+        "vars:MASK_OPEN": {
+          "true": "mask"
+        }
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "vars": {
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open_timer') > 0"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "vars": {
+    "SPEEDING": "entity.getData('fiskheroes:speeding')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:iron_man_layer1",
+    "layer2": "fiskheroes:iron_man_layer2",
+    "lights_layer1": "fiskheroes:iron_man_lights_layer1",
+    "lights_layer2": "fiskheroes:iron_man_lights_layer2",
+    "lights_suit": "fiskheroes:iron_man_lights_suit",
+    "suit": "fiskheroes:iron_man_suit.tx.json",
+    "mask": "fiskheroes:iron_man_mask.tx.json",
+    "repulsor": "fiskheroes:iron_man_repulsor"
+  },
+  "texture": {
+    "vars:SUIT_OPEN": {
+      "true": "suit"
+    },
+    "renderLayer": {
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "lights": {
+    "vars:MASK_OPEN": {
+      "true": {
+        "renderLayer": {
+          "HELMET": "null"
+        }
+      }
+    },
+    "vars:SUIT_OPEN": {
+      "true": "lights_suit"
+    },
+    "renderLayer": {
+      "LEGGINGS": "lights_layer2"
+    },
+    "default": "lights_layer1"
+  },
+  "custom": {
+    "fiskheroes:metal_heat": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "includeEffects": ["fiskheroes:opening_mask"],
+      "texture": "null",
+      "data": "fiskheroes:metal_heat"
+    },
+    "fiskheroes:repulsor_blast": {
+      "color": "0xFFE77C",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-4.5, 3.75, -8.0],
+          "offset": [-0.5, 9.0, 0.0],
+          "size": [1.5, 1.5]
+        }
+      ],
+      "renderer": "fiskheroes:repulsor_blast"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:iron_man",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:opening_mask": {
+      "applicable": ["HELMET"],
+      "texture": "mask",
+      "rotation": [-80.0, 0.0, 0.0],
+      "translation": [0.0, -3.5, -7.0],
+      "data": "fiskheroes:mask_open_timer2"
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["null", "repulsor"],
+      "opacity": 1.0,
+      "data": "Math.min(entity.getInterpolatedData('fiskheroes:aimed_timer') * 2, 1)"
+    },
+    "fiskheroes:booster|boots": {
+      "applicable": ["BOOTS"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightLeg",
+      "offset": [0.0, 12.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|hands": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightArm",
+      "offset": [1.0, 10.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.0, 2.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "hideFirstPerson": true,
+      "data": "entity.getData('fiskheroes:hovering') ? 0 : entity.getInterpolatedData('fiskheroes:jetpacking_timer')"
+    },
+    "fiskheroes:booster|back": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "body",
+      "offset": [2.0, 4.0, 1.75],
+      "rotation": [25.0, 0.0, 10.0],
+      "scale": [1.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "entity.getData('fiskheroes:hovering') && entity.getData('fiskheroes:suit_open_timer') == 0 ? entity.getInterpolatedData('fiskheroes:jetpacking_timer') : 0"
+    }
+  },
+  "vars": {
+    "SUIT_OPEN": "entity.getData('fiskheroes:suit_open_timer') > 0",
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open_timer2') > 0",
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')"
+  }
+}
+{
+  "parent": "fiskheroes:iron_man",
+  "resources": {
+    "layer1": "fiskheroes:iron_man_mk45_layer1",
+    "layer2": "fiskheroes:iron_man_mk45_layer2",
+    "lights": "fiskheroes:iron_man_mk45_lights",
+    "suit": "fiskheroes:iron_man_mk45_suit.tx.json",
+    "mask": "fiskheroes:iron_man_mk45_mask.tx.json"
+  },
+  "lights": {
+    "vars:MASK_OPEN": {
+      "true": {
+        "renderLayer": {
+          "HELMET": "null"
+        }
+      }
+    },
+    "default": "lights"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  }
+}
+{
+  "parent": "fiskheroes:iron_man",
+  "resources": {
+    "layer1": "fiskheroes:iron_man_mk46c_layer1",
+    "layer2": "fiskheroes:iron_man_mk46c_layer2",
+    "lights_layer1": "fiskheroes:iron_man_mk46c_lights_layer1",
+    "lights_layer2": "fiskheroes:iron_man_mk46c_lights_layer2",
+    "lights_suit": "fiskheroes:iron_man_mk46c_lights_suit",
+    "suit": "fiskheroes:iron_man_mk46c_suit.tx.json",
+    "mask": "fiskheroes:iron_man_mk46c_mask.tx.json"
+  }
+}
+{
+  "parent": "fiskheroes:iron_man",
+  "resources": {
+    "layer1": "fiskheroes:iron_man_mk47_layer1",
+    "layer2": "fiskheroes:iron_man_mk47_layer2",
+    "lights_layer1": "fiskheroes:iron_man_mk47_lights_layer1",
+    "lights_layer2": "fiskheroes:iron_man_mk47_lights_layer2",
+    "lights_suit": "fiskheroes:iron_man_mk47_lights_suit",
+    "suit": "fiskheroes:iron_man_mk47_suit.tx.json"
+  },
+  "itemIcons": {
+    "HELMET": "iron_man_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  }
+}
+{
+  "parent": "fiskheroes:iron_man_mk46c",
+  "resources": {
+    "layer1": "fiskheroes:iron_man_mk47c_layer1",
+    "layer2": "fiskheroes:iron_man_mk47c_layer2",
+    "suit": "fiskheroes:iron_man_mk47c_suit.tx.json"
+  },
+  "itemIcons": {
+    "HELMET": "iron_man_mk46c_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "iron_man_mk46c_3"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "base": "fiskheroes:iron_man_mk50",
+    "suit": "fiskheroes:iron_man_mk50_suit.tx.json",
+    "mask": "fiskheroes:iron_man_mk50_mask.tx.json",
+    "mask_lights": "fiskheroes:iron_man_mk50_mask_lights",
+    "lights": "fiskheroes:iron_man_mk50_lights",
+    "reactor": "fiskheroes:iron_man_mk50_reactor",
+    "reactor_lights": "fiskheroes:iron_man_mk50_reactor_lights",
+    "shield": "fiskheroes:iron_man_mk50_shield",
+    "shield_lights": "fiskheroes:iron_man_mk50_shield_lights",
+    "blade": "fiskheroes:iron_man_mk50_blade",
+    "blade_lights": "fiskheroes:iron_man_mk50_blade_lights",
+    "cannon1": "fiskheroes:iron_man_mk50_cannon1",
+    "cannon2": "fiskheroes:iron_man_mk50_cannon2",
+    "cannon1_lights": "fiskheroes:iron_man_mk50_cannon1_lights",
+    "cannon2_lights": "fiskheroes:iron_man_mk50_cannon2_lights",
+    "cannon_inner": "fiskheroes:iron_man_mk50_cannon_inner"
+  },
+  "texture": {
+    "vars:MASK_OPEN" : {
+      "true": "mask"
+    },
+    "vars:DISPLAY": {
+      "false": {
+        "vars:OPEN": {
+          "true": "reactor"
+        },
+        "vars:ANIM": {
+          "true": "suit"
+        }
+      }
+    },
+    "default": "base"
+  },
+  "lights": {
+    "vars:MASK_OPEN" : {
+      "true": "mask_lights"
+    },
+    "vars:DISPLAY": {
+      "false": {
+        "vars:ANIM": {
+          "true": "reactor_lights"
+        }
+      }
+    },
+    "default": "lights"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE"],
+    "leftLeg": ["CHESTPLATE"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "animations": {
+    "AIMING": "fiskheroes:aiming_fpcorr"
+  },
+  "custom": {
+    "fiskheroes:metal_heat": {
+      "applicable": ["CHESTPLATE"],
+      "includeEffects": ["fiskheroes:shield|blade", "fiskheroes:shield|shield", "fiskheroes:shield|cannon1", "fiskheroes:shield|cannon2"],
+      "texture": "null",
+      "data": "fiskheroes:metal_heat"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:iron_man",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:energy_bolt": {
+      "color": "0x00ACFF"
+    },
+    "fiskheroes:shield|blade": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["blade", "blade_lights"],
+      "offset": [1.5, 8.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "curve": [0.0, 0.0],
+      "mirror": false,
+      "large": true,
+      "data": "fiskheroes:blade_timer"
+    },
+    "fiskheroes:shield|shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["shield", "shield_lights"],
+      "offset": [4.7, 6.0, 0.0],
+      "rotation": [0.0, 0.0, -10.0],
+      "curve": [15.0, 50.0],
+      "mirror": false,
+      "large": true,
+      "data": "fiskheroes:shield_timer"
+    },
+    "fiskheroes:shield|cannon1": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["cannon1", "cannon1_lights"],
+      "offset": [1.25, 8.3, 2.67],
+      "rotation": [3.0, 90.0, 3.0],
+      "curve": [30.0, 136.0],
+      "mirror": false,
+      "large": true,
+      "data": "fiskheroes:aimed_timer"
+    },
+    "fiskheroes:shield|cannon2": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["cannon2", "cannon2_lights"],
+      "offset": [1.25, 8.9, -2.67],
+      "rotation": [-7.0, -90.0, 7.0],
+      "curve": [60.0, 136.0],
+      "mirror": false,
+      "large": true,
+      "data": "fiskheroes:aimed_timer"
+    },
+    "fiskheroes:shield|cannon3": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["null", "cannon_inner"],
+      "offset": [2.25, 13.05, -0.25],
+      "rotation": [0.0, 0.0, -90.0],
+      "curve": [0.0, -77.0],
+      "mirror": false,
+      "large": false,
+      "data": "Math.max(1 - (1 - entity.getInterpolatedData('fiskheroes:aimed_timer')) * 2, 0)"
+    },
+    "fiskheroes:beam": {
+      "applicable": ["CHESTPLATE"],
+      "color": "0x00ACFF",
+      "anchor": "rightArm",
+      "offset": [1.0, 13.75, -0.25],
+      "rotation": [0.0, 0.0, 0.0],
+      "componentBeams": [
+        {
+          "direction": [0.0, 0.0, -3.8],
+          "beam": {
+            "offset": [0.0, 0.0, 1.9],
+            "size": [0.1, 0.1]
+          }
+        },
+        {
+          "direction": [0.0, 0.0, -5.1],
+          "beam": {
+            "offset": [0.0, 0.5, 2.55],
+            "size": [0.1, 0.1]
+          }
+        },
+        {
+          "direction": [0.0, 0.0, -5.35],
+          "beam": {
+            "offset": [0.0, 1.0, 2.675],
+            "size": [0.1, 0.1]
+          }
+        },
+        {
+          "direction": [0.0, 0.0, -5.6],
+          "beam": {
+            "offset": [0.0, 1.5, 2.8],
+            "size": [0.1, 0.1]
+          }
+        },
+        {
+          "direction": [0.0, 0.0, -5.8],
+          "beam": {
+            "offset": [0.0, 2.0, 2.9],
+            "size": [0.1, 0.1]
+          }
+        }
+      ],
+      "mirror": false,
+      "length": "Math.max(1 - (1 - entity.getInterpolatedData('fiskheroes:aimed_timer')) * 2, 0)",
+      "renderer": "fiskheroes:crab_cannon"
+    },
+    "fiskheroes:booster|boots": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightLeg",
+      "offset": [0.0, 12.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|hands": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightArm",
+      "offset": [1.0, 10.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.0, 2.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "hideFirstPerson": true,
+      "data": "entity.getData('fiskheroes:hovering') ? 0 : entity.getInterpolatedData('fiskheroes:jetpacking_timer')"
+    },
+    "fiskheroes:booster|back": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "body",
+      "offset": [2.0, 4.0, 1.75],
+      "rotation": [25.0, 0.0, 10.0],
+      "scale": [1.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "entity.getData('fiskheroes:hovering') ? entity.getInterpolatedData('fiskheroes:jetpacking_timer') : 0"
+    }
+  },
+  "vars": {
+    "ANIM": "entity.getInterpolatedData('fiskheroes:dyn/nanite_timer') < 1",
+    "OPEN": "entity.getInterpolatedData('fiskheroes:dyn/nanite_timer') == 0",
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open_timer2') > 0",
+    "DISPLAY": "entity.is('DISPLAY') && entity.as('DISPLAY').getDisplayType() !== 'BOOK_PREVIEW'",
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "base": "fiskheroes:iron_man_mk85",
+    "suit": "fiskheroes:iron_man_mk85_suit.tx.json",
+    "mask": "fiskheroes:iron_man_mk85_mask.tx.json",
+    "mask_lights": "fiskheroes:iron_man_mk85_mask_lights",
+    "lights": "fiskheroes:iron_man_mk85_lights",
+    "reactor": "fiskheroes:iron_man_mk85_reactor",
+    "reactor_lights": "fiskheroes:iron_man_mk85_reactor_lights",
+    "shield": "fiskheroes:iron_man_mk85_shield",
+    "shield_handle": "fiskheroes:iron_man_mk85_shield_handle",
+    "shield_handle_lights": "fiskheroes:iron_man_mk85_shield_handle_lights",
+    "blade": "fiskheroes:iron_man_mk85_blade",
+    "blade_lights": "fiskheroes:iron_man_mk85_blade_lights",
+    "backpack": "fiskheroes:iron_man_mk85_backpack"
+  },
+  "texture": {
+    "vars:MASK_OPEN" : {
+      "true": "mask"
+    },
+    "vars:DISPLAY": {
+      "false": {
+        "vars:OPEN": {
+          "true": "reactor"
+        },
+        "vars:ANIM": {
+          "true": "suit"
+        }
+      }
+    },
+    "default": "base"
+  },
+  "lights": {
+    "vars:MASK_OPEN" : {
+      "true": "mask_lights"
+    },
+    "vars:DISPLAY": {
+      "false": {
+        "vars:ANIM": {
+          "true": "reactor_lights"
+        }
+      }
+    },
+    "default": "lights"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE"],
+    "leftLeg": ["CHESTPLATE"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "custom": {
+    "fiskheroes:metal_heat": {
+      "applicable": ["CHESTPLATE"],
+      "includeEffects": ["fiskheroes:shield|blade", "fiskheroes:shield|shield_handle", "fiskheroes:shield|backpack1", "fiskheroes:shield|backpack2", "fiskheroes:shield|backpack3"],
+      "texture": "null",
+      "data": "fiskheroes:metal_heat"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:iron_man",
+      "conditionals": ["vars:FLYING"]
+    },
+    "fiskheroes:arm_animation": {
+      "dataRArmPose": "Math.max(entity.getInterpolatedData('fiskheroes:beam_charge') * 5 - 4, 0)",
+      "dataLArmPose": "Math.max(entity.getInterpolatedData('fiskheroes:beam_charge') * 5 - 4, 0)"
+    },
+    "fiskheroes:charged_beam": {
+      "color": "0xFFE77C",
+      "anchor": "body",
+      "beams": [
+        {
+          "offset": [6.75, 10.0, 3.0],
+          "size": [2.0, 2.0]
+        },
+        {
+          "offset": [10.0, 0.5, 3.0],
+          "size": [2.0, 2.0]
+        },
+        {
+          "offset": [6.5, -4.5, 3.0],
+          "size": [2.0, 2.0]
+        }
+      ],
+      "mirror": true,
+      "renderer": "fiskheroes:charged_beam",
+      "particleType": "fiskheroes:impact_charged_beam"
+    },
+    "fiskheroes:shield|blade": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["blade", "blade_lights"],
+      "offset": [1.5, 8.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "curve": [0.0, 0.0],
+      "mirror": false,
+      "large": true,
+      "data": "fiskheroes:blade_timer"
+    },
+    "fiskheroes:shield|shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["null", "shield"],
+      "offset": [6.0, 10.25, 0.0],
+      "rotation": [55.0, -20.0, -10.0],
+      "curve": [15.0, 50.0],
+      "mirror": false,
+      "large": true,
+      "opacity": 0.5,
+      "data": "fiskheroes:shield_blocking_timer"
+    },
+    "fiskheroes:shield|shield_handle": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["shield_handle", "shield_handle_lights"],
+      "offset": [3.5, 7.0, -3.0],
+      "rotation": [55.0, -20.0, 20.0],
+      "curve": [100.0, 45.0],
+      "mirror": false,
+      "large": false,
+      "data": "entity.getData('fiskheroes:shield') ? Math.min(entity.getInterpolatedData('fiskheroes:shield_timer') * 2, 1) : Math.max(entity.getInterpolatedData('fiskheroes:shield_timer') * 2 - 1, 0)"
+    },
+    "fiskheroes:shield|backpack1": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "backpack",
+      "anchor": "body",
+      "offset": [1.5, 5.0, 3.75],
+      "rotation": [-90.0, 45.0, 120.0],
+      "curve": [70.0, 160.0],
+      "mirror": true,
+      "large": false,
+      "data": "Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 4, 1)"
+    },
+    "fiskheroes:shield|backpack2": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "backpack",
+      "anchor": "body",
+      "offset": [3.5, 4.0, 3.75],
+      "rotation": [-90.0, -25.0, 120.0],
+      "curve": [70.0, 160.0],
+      "mirror": true,
+      "large": false,
+      "data": "Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 4, 1)"
+    },
+    "fiskheroes:shield|backpack3": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "backpack",
+      "anchor": "body",
+      "offset": [3.0, 2.0, 3.75],
+      "rotation": [-90.0, -60.0, 120.0],
+      "curve": [70.0, 160.0],
+      "mirror": true,
+      "large": false,
+      "data": "Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 4, 1)"
+    },
+    "fiskheroes:booster|boots": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightLeg",
+      "offset": [0.0, 12.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "fiskheroes:jetpacking_timer"
+    },
+    "fiskheroes:booster|hands": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "rightArm",
+      "offset": [1.0, 10.0, 0.0],
+      "rotation": [0.0, 0.0, 0.0],
+      "scale": [2.0, 2.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "hideFirstPerson": true,
+      "data": "entity.getData('fiskheroes:hovering') ? 0 : entity.getInterpolatedData('fiskheroes:jetpacking_timer')"
+    },
+    "fiskheroes:booster|back": {
+      "applicable": ["CHESTPLATE"],
+      "icon": "fiskheroes:repulsor_layer_%s",
+      "anchor": "body",
+      "offset": [2.0, 4.0, 1.75],
+      "rotation": [25.0, 0.0, 10.0],
+      "scale": [1.5, 3.0],
+      "opacity": 1.0,
+      "mirror": true,
+      "data": "entity.getData('fiskheroes:hovering') ? entity.getInterpolatedData('fiskheroes:jetpacking_timer') : 0"
+    }
+  },
+  "vars": {
+    "ANIM": "entity.getInterpolatedData('fiskheroes:dyn/nanite_timer') < 1",
+    "OPEN": "entity.getInterpolatedData('fiskheroes:dyn/nanite_timer') == 0",
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open_timer2') > 0",
+    "DISPLAY": "entity.is('DISPLAY') && entity.as('DISPLAY').getDisplayType() !== 'BOOK_PREVIEW'",
+    "FLYING": "entity.getData('fiskheroes:jetpacking') || entity.getData('fiskheroes:hovering')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:kid_flash_layer1",
+    "layer2": "fiskheroes:kid_flash_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_amber",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:killer_frost_base",
+  "resources": {
+    "hair": "fiskheroes:killer_frost_hair",
+    "coat": "fiskheroes:killer_frost_coat",
+    "coat_hair": "fiskheroes:killer_frost_coat_hair",
+    "pants": "fiskheroes:killer_frost_pants",
+    "pants_coat": "fiskheroes:killer_frost_pants_coat",
+    "boots": "fiskheroes:killer_frost_boots",
+    "hands": "fiskheroes:killer_frost_hands"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "hair",
+      "CHESTPLATE": {
+        "wornHelmet": {
+          "fiskheroes:killer_frost": "coat_hair"
+        },
+        "default": "coat"
+      },
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:killer_frost": "pants_coat"
+        },
+        "default": "pants"
+      }
+    },
+    "default": "boots"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["HELMET", "CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["HELMET", "CHESTPLATE"],
+    "leftArm": ["HELMET", "CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "icicle": "fiskheroes:killer_frost_icicle"
+  },
+  "custom": {
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "extrude": 0.75,
+      "offset": 1
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["null", "hands"],
+      "opacity": 0.8,
+      "data": "fiskheroes:cryo_charge"
+    },
+    "fiskheroes:particles": {
+      "particleType": "fiskheroes:killer_frost_ice",
+      "conditionals": ["vars:CHARGING"]
+    },
+    "fiskheroes:shield|spikeL": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "icicle",
+      "offset": [3.25, 10.0, 0.0],
+      "rotation": [0.0, 0.0, -3.125],
+      "curve": [20.0, 90.0],
+      "mirror": false,
+      "large": false,
+      "data": "entity.getInterpolatedData('fiskheroes:blade_timer') * (entity.isBookPlayer() ? 1 : Math.sqrt(entity.getData('fiskheroes:cryo_charge')))"
+    },
+    "fiskheroes:shield|spikeR": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "icicle",
+      "offset": [-1.25, 10.0, 0.0],
+      "rotation": [0.0, 180.0, -3.125],
+      "curve": [20.0, 90.0],
+      "mirror": false,
+      "large": false,
+      "data": "entity.getInterpolatedData('fiskheroes:blade_timer') * (entity.isBookPlayer() ? 1 : Math.sqrt(entity.getData('fiskheroes:cryo_charge')))"
+    }
+  },
+  "vars": {
+    "CHARGING": "entity.getData('fiskheroes:cryo_charging')"
+  }
+}
+{
+  "parent": "fiskheroes:killer_frost_base",
+  "resources": {
+    "layer1": "fiskheroes:killer_frost_earth2_layer1",
+    "layer2": "fiskheroes:killer_frost_earth2_layer2",
+    "chest": "fiskheroes:killer_frost_earth2_chest",
+    "hands": "fiskheroes:killer_frost_earth2_hands",
+    "hair": "fiskheroes:killer_frost_hair"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "hair",
+      "CHESTPLATE": {
+        "wornHelmet": {
+          "fiskheroes:killer_frost/earth2": "layer1"
+        },
+        "default": "chest"
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["HELMET", "CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["HELMET", "CHESTPLATE"],
+    "leftArm": ["HELMET", "CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "itemIcons": {
+    "HELMET": "killer_frost_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:martian_manhunter_layer1",
+    "layer2": "fiskheroes:martian_manhunter_layer2",
+    "cape": "fiskheroes:martian_manhunter_cape"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:martian_manhunter_comics_layer1",
+    "layer2": "fiskheroes:martian_manhunter_comics_layer2",
+    "cape": "fiskheroes:martian_manhunter_comics_cape"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": "layer2",
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    },
+    "fiskheroes:heat_vision": {
+      "color": "0xFF0000",
+      "anchor": "head",
+      "beams": [
+        {
+          "firstPerson": [2.2, 0.0, 2.0],
+          "offset": [2.2, -3.3, -4.0],
+          "size": [1.0, 0.5]
+        }
+      ],
+      "mirror": true,
+      "renderer": "fiskheroes:heat_vision",
+      "particleType": "fiskheroes:impact_heat_vision"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:mysterio_layer1",
+    "layer2": "fiskheroes:mysterio_layer2",
+    "mask": "fiskheroes:mysterio_mask",
+    "mask_anim": "fiskheroes:mysterio_mask.tx.json",
+    "collar": "fiskheroes:mysterio_collar.tx.json",
+    "lights_layer1": "fiskheroes:mysterio_lights_layer1",
+    "lights_layer2": "fiskheroes:mysterio_lights_layer2",
+    "cape": "fiskheroes:mysterio_cape",
+    "cape_lights": "fiskheroes:mysterio_cape_lights"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": {
+        "vars:MASK_OPEN": {
+          "true": "collar"
+        }
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "lights": {
+    "renderLayer": {
+      "HELMET": {
+        "vars:MASK_OPEN": {
+          "false": "mask"
+        }
+      },
+      "LEGGINGS": "lights_layer2"
+    },
+    "default": "lights_layer1"
+  },
+  "animations": {
+    "ENERGY_PROJECTION": null
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": ["cape", "cape_lights"],
+      "length": 24,
+      "wide": true
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET"],
+      "texture": ["null", "mask_anim"],
+      "opacity": 1.0,
+      "data": "1 - entity.getInterpolatedData('fiskheroes:mask_open_timer2')",
+      "conditionals": ["vars:MASK_OPEN"]
+    },
+    "fiskheroes:spellcasting": {
+      "colorGeneric": "0x66FF47"
+    },
+    "fiskheroes:arm_animation": {
+      "dataRArmPose": "Math.max(entity.getInterpolatedData('fiskheroes:aiming_timer'), entity.getData('fiskheroes:beam_charging') ? Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 3, 1) : Math.max(entity.getInterpolatedData('fiskheroes:beam_charge') * 5 - 4, 0))",
+      "dataLArmPose": "Math.max(entity.getInterpolatedData('fiskheroes:aiming_timer'), entity.getData('fiskheroes:beam_charging') ? Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 3, 1) : Math.max(entity.getInterpolatedData('fiskheroes:beam_charge') * 5 - 4, 0))"
+    },
+    "fiskheroes:charged_beam": {
+      "color": "0x66FF47",
+      "anchor": "head",
+      "beams": [
+        {
+          "offset": [0.0, 5.0, -22.0],
+          "size": [4.0, 4.0]
+        }
+      ],
+      "renderer": "fiskheroes:mysterio_beam",
+      "particleType": "fiskheroes:impact_charged_beam"
+    },
+    "fiskheroes:energy_projection": {
+      "color": "0x66FF47",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-3.75, 3.0, -8.0],
+          "offset": [-0.5, 12.0, 0.0],
+          "size": [1.5, 1.5]
+        }
+      ],
+      "mirror": true,
+      "renderer": "fiskheroes:mysterio_beam",
+      "particleType": "fiskheroes:impact_energy_projection"
+    },
+    "fiskheroes:spell": {
+      "applicable": ["CHESTPLATE"],
+      "shape": "fiskheroes:mysterio_glyph",
+      "offset": [-1.0, 8.0, 0.0],
+      "rotation": [0.0, 0.0, 10.0],
+      "scale": 0.3,
+      "mirror": true,
+      "color": "0x66FF47",
+      "data": "fiskheroes:aimed_timer"
+    },
+    "fiskheroes:spell|beam": {
+      "applicable": ["HELMET"],
+      "shape": "fiskheroes:mysterio_glyph",
+      "anchor": "head",
+      "offset": [0.0, 0.0, -24.0],
+      "rotation": [-90.0, 0.0, 0.0],
+      "scale": 1.0,
+      "mirror": false,
+      "color": "0x66FF47",
+      "data": "entity.getData('fiskheroes:beam_charging') ? Math.min(entity.getInterpolatedData('fiskheroes:beam_charge') * 3, 1) : Math.max(entity.getInterpolatedData('fiskheroes:beam_charge') * 3 - 2, 0)"
+    }
+  },
+  "vars": {
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open_timer2') > 0"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:obsidian_layer1",
+    "layer2": "fiskheroes:obsidian_layer2",
+    "hood": "fiskheroes:obsidian_hood",
+    "cape": "fiskheroes:obsidian_cape"
+  },
+  "texture": {
+    "renderLayer": {
+      "HELMET": {
+        "wornChestplate": {
+          "fiskheroes:obsidian": "layer2"
+        },
+        "default": "hood"
+      },
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET", "CHESTPLATE"],
+    "headwear": ["HELMET", "CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["HELMET", "CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    },
+    "fiskheroes:invisibility": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "opacityMin": 0.0,
+      "opacityMax": 1.0,
+      "data": "fiskheroes:shadowform_timer"
+    },
+    "fiskheroes:particle_cloud": {
+      "particles": "fiskheroes:shadow_smoke",
+      "conditionals": ["vars:SHADOWFORM"]
+    },
+    "fiskheroes:shadowdome": {
+      "texture": "fiskheroes:textures/entity/shadow_dome.png",
+      "shape": [36, 18]
+    },
+    "fiskheroes:telekinesis_chain": {
+      "particles": "fiskheroes:shadow_smoke",
+      "anchor": "rightArm",
+      "offset": [-0.5, 10.0, 0.0],
+      "firstPerson": [-4.75, 4.0, -8.5]
+    }
+  },
+  "vars": {
+    "SHADOWFORM": "entity.getData('fiskheroes:shadowform')"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:prometheus_layer1",
+    "layer2": "fiskheroes:prometheus_layer2",
+    "arrow": "fiskheroes:arrow/prometheus",
+    "quiver": "fiskheroes:quiver/prometheus",
+    "quiver_auto": "fiskheroes:quiver/prometheus_auto",
+    "sheath": "fiskheroes:sword_sheath"
+  },
+  "custom": {
+    "fiskheroes:archery": {
+      "textureArrow": "arrow",
+      "textureQuiver": "quiver",
+      "textureAutoQuiver": "quiver_auto"
+    },
+    "fiskheroes:prometheus_sheath": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "sheath"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 0.48,
+          "offset": [-6.68, -3.4, 2.64],
+          "rotation": [180.0, 90.0, -30.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:prometheus",
+  "resources": {
+    "layer1": "fiskheroes:prometheus_earthx_layer1",
+    "layer2": "fiskheroes:prometheus_earthx_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:reverse_flash_layer1",
+    "layer2": "fiskheroes:reverse_flash_layer2",
+    "eyes": "fiskheroes:reverse_flash_eyes"
+  },
+  "lights": {
+    "renderLayer": {
+      "HELMET": {
+        "vars:MASK_OPEN": {
+          "true": "eyes"
+        }
+      }
+    },
+    "default": "null"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_red",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:vibration": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "conditionals": ["vars:MASK_OPEN"]
+    }
+  },
+  "vars": {
+    "MASK_OPEN": "entity.getData('fiskheroes:mask_open')"
+  }
+}
+{
+  "parent": "fiskheroes:reverse_flash",
+  "resources": {
+    "layer1": "fiskheroes:reverse_flash_earthx_layer1"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "reverse_flash_2",
+    "BOOTS": "reverse_flash_3"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:rip_hunter_layer1",
+    "layer2": "fiskheroes:rip_hunter_pants",
+    "pants_trenchcoat": "fiskheroes:rip_hunter_pants_trenchcoat",
+    "boots": "fiskheroes:rip_hunter_boots",
+    "boots_trenchcoat": "fiskheroes:rip_hunter_boots_trenchcoat"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": {
+        "wornChestplate": {
+          "fiskheroes:rip_hunter": "pants_trenchcoat"
+        },
+        "default": "layer2"
+      },
+      "BOOTS": {
+        "wornChestplate": {
+          "fiskheroes:rip_hunter": "boots_trenchcoat"
+        },
+        "default": "boots"
+      }
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "custom": {
+    "fiskheroes:energy_bolt": {
+      "color": "0x005EFF"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:rip_hunter_time_master",
+    "layer2": "fiskheroes:rip_hunter_pants"
+  },
+  "itemIcons": {
+    "HELMET": "rip_hunter_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "rip_hunter_2",
+    "BOOTS": "rip_hunter_3"
+  },
+  "custom": {
+    "fiskheroes:energy_bolt": {
+      "color": "0x005EFF"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["LEGGINGS"],
+      "items": [
+        {
+          "anchor": "rightLeg",
+          "scale": 0.325,
+          "offset": [-2.0, 0.0, 1.5],
+          "rotation": [90.0, 0.0, -7.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:rupture_layer1",
+    "layer2": "fiskheroes:rupture_layer2",
+    "cape": "fiskheroes:rupture_cape"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 20
+    },
+    "fiskheroes:energy_manipulation": {
+      "color": "0xFF0000",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-2.5, 0.0, -7.0],
+          "offset": [-0.5, 19.0, -12.0],
+          "size": [1.5, 1.5]
+        }
+      ],
+      "renderer": "fiskheroes:energy_discharge"
+    },
+    "fiskheroes:equipped_item": {
+      "applicable": ["CHESTPLATE"],
+      "items": [
+        {
+          "anchor": "body",
+          "scale": 0.55,
+          "offset": [0.5, 4.5, 3.0],
+          "rotation": [0.0, -90.0, 35.0]
+        }
+      ]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:savitar_layer1",
+    "layer2": "fiskheroes:savitar_layer2",
+    "layer1_lights": "fiskheroes:savitar_layer1_lights",
+    "layer2_lights": "fiskheroes:savitar_layer2_lights",
+    "metal": "fiskheroes:savitar_metal",
+    "spike": "fiskheroes:savitar_spike"
+  },
+  "lights": {
+    "renderLayer": {
+      "LEGGINGS": "layer2_lights"
+    },
+    "default": "layer1_lights"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_white",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:metal_heat": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "includeEffects": ["fiskheroes:shield"],
+      "texture": "metal",
+      "data": "fiskheroes:metal_heat"
+    },
+    "fiskheroes:shield": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "spike",
+      "offset": [3.5, 8.0, 0.0],
+      "rotation": [0.0, 0.0, 10.0],
+      "curve": [40.0, 160.0],
+      "mirror": false,
+      "large": false,
+      "data": "fiskheroes:blade_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:savitar",
+  "resources": {
+    "layer1": "fiskheroes:savitar_red_layer1",
+    "layer2": "fiskheroes:savitar_red_layer2",
+    "layer1_lights": "fiskheroes:savitar_red_layer1_lights",
+    "layer2_lights": "fiskheroes:savitar_red_layer2_lights",
+    "metal": "fiskheroes:savitar_red_metal",
+    "spike": "fiskheroes:savitar_red_spike"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_gold",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:savitar",
+  "resources": {
+    "layer1_lights": "fiskheroes:savitar_rgb_layer1_lights.tx.json",
+    "layer2_lights": "fiskheroes:savitar_rgb_layer2_lights.tx.json"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "builtin/lightning_rgb_6",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:senor_cactus_layer1",
+    "layer2": "fiskheroes:senor_cactus_layer2",
+    "cape": "fiskheroes:senor_cactus_cape",
+    "hat": "fiskheroes:senor_cactus_sombrero"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    },
+    "fiskheroes:model": {
+      "applicable": ["HELMET"],
+      "modelType": "fiskheroes:sombrero",
+      "texture": "hat",
+      "anchor": "head",
+      "opacity": 1.0,
+      "animations": [
+        {
+          "animation": "fiskheroes:hat_tip_sombrero",
+          "data": "fiskheroes:hat_tip"
+        }
+      ]
+    },
+    "fiskheroes:animation": {
+      "animation": "fiskheroes:hat_tip_player",
+      "data": "fiskheroes:hat_tip"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:senor_cactus",
+  "resources": {
+    "layer1": "fiskheroes:senor_cactus_old_layer1",
+    "layer2": "fiskheroes:senor_cactus_old_layer2",
+    "hat": "fiskheroes:senor_cactus_old_sombrero"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:shazam_dceu_layer1",
+    "layer2": "fiskheroes:shazam_dceu_layer2",
+    "lights": "fiskheroes:shazam_dceu_lights",
+    "cape": "fiskheroes:shazam_dceu_cape"
+  },
+  "lights": {
+    "renderLayer": {
+      "CHESTPLATE": "lights"
+    },
+    "default": "null"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["LEGGINGS", "BOOTS"],
+    "leftLeg": ["LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 17
+    },
+    "fiskheroes:trail": {
+      "type": "fiskheroes:shazam",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:lightning_attack": {
+      "color": "0xD9FFFF",
+      "anchor": "rightArm",
+      "beams": [
+        {
+          "firstPerson": [-8.0, 4.5, -10.0],
+          "offset": [-0.5, 9.0, 0.0],
+          "size": [0.75, 0.75]
+        }
+      ],
+      "renderer": "fiskheroes:lightning_cast"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:spectre_layer1",
+    "layer2": "fiskheroes:spectre_layer2",
+    "layer1_cloak": "fiskheroes:spectre_layer1_cloak",
+    "layer2_cloak": "fiskheroes:spectre_layer2_cloak",
+    "cloak": "fiskheroes:spectre_cloak"
+  },
+  "texture": {
+    "wornHelmet": {
+      "fiskheroes:spectre": {
+        "renderLayer": {
+          "HELMET": "cloak",
+          "LEGGINGS": "layer2_cloak"
+        },
+        "default": "layer1_cloak"
+      }
+    },
+    "renderLayer": {
+      "LEGGINGS": "layer2"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["HELMET", "CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["HELMET", "CHESTPLATE"],
+    "leftArm": ["HELMET", "CHESTPLATE"],
+    "rightLeg": ["HELMET", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["HELMET", "LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:energy_projection": {
+      "color": "0x0022FF",
+      "anchor": "body",
+      "beams": [
+        {
+          "firstPerson": [0.0, 6.0, 0.0],
+          "offset": [0.0, 5.0, -4.0],
+          "size": [4.0, 4.0]
+        }
+      ],
+      "renderer": "fiskheroes:energy_projection",
+      "particleType": "fiskheroes:impact_energy_projection"
+    },
+    "fiskheroes:teleportation": {
+      "particles": "fiskheroes:breach"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_layer1",
+    "layer2": "fiskheroes:spider_man_layer2",
+    "wings": "fiskheroes:spider_man_wings"
+  },
+  "animations": {
+    "AIMING": "fiskheroes:web_aim_right",
+    "AIMING_LEFT": "fiskheroes:web_aim_left",
+    "WEBSWING_DEFAULT": "fiskheroes:swing_default",
+    "WEBSWING_RIGHT": "fiskheroes:swing_right",
+    "WEBSWING_LEFT": "fiskheroes:swing_left",
+    "WEBSWING_TRICK_DEFAULT": ["fiskheroes:swing_roll", "fiskheroes:swing_roll2", "fiskheroes:swing_roll5"],
+    "WEBSWING_TRICK_RIGHT": "fiskheroes:swing_rotate_right",
+    "WEBSWING_TRICK_LEFT": "fiskheroes:swing_rotate_left",
+    "WEBSWING_ZIP": "fiskheroes:swing_zip",
+    "WEBSWING_DIVE": ["fiskheroes:swing_dive", "fiskheroes:swing_dive2"],
+    "WEBSWING_LEAP": "fiskheroes:swing_springboard",
+    "WEBSWING_SHOOT_RIGHT": "fiskheroes:web_swing_shoot_right",
+    "WEBSWING_SHOOT_LEFT": "fiskheroes:web_swing_shoot_left",
+    "WEBSHOOTER_SHOOT_RIGHT": "fiskheroes:web_shoot_right",
+    "WEBSHOOTER_SHOOT_LEFT": "fiskheroes:web_shoot_left",
+
+    "WEB_RAPPEL": "fiskheroes:web_rappel",
+    "CEILING_CRAWL": "fiskheroes:crawl_ceiling"
+  },
+  "custom": {
+    "fiskheroes:arm_animation": {
+      "dataRArmPose": "fiskheroes:web_aim_right_timer",
+      "dataLArmPose": "fiskheroes:web_aim_left_timer"
+    },
+    "fiskheroes:equipment_wheel": {
+      "color": "0x00DAFF"
+    },
+    "fiskheroes:wingsuit": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "wings",
+      "opacity": 0.99,
+      "data": "fiskheroes:wing_animation_timer"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_integrated_layer1",
+    "layer2": "fiskheroes:spider_man_integrated_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_ps4_layer1",
+    "layer2": "fiskheroes:spider_man_ps4_layer2"
+  },
+  "animations": {
+    "WEBSWING_TRICK_RIGHT": ["fiskheroes:swing_rotate_right", "fiskheroes:swing_rotate_right1"],
+    "WEBSWING_TRICK_LEFT": ["fiskheroes:swing_rotate_left", "fiskheroes:swing_rotate_left1"]
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_raimi_layer1",
+    "layer2": "fiskheroes:spider_man_raimi_layer2"
+  },
+  "animations": {
+    "WEBSWING_DEFAULT": "fiskheroes:swing_default2",
+    "WEBSWING_TRICK_DEFAULT": "fiskheroes:swing_roll"
+  },
+  "custom": {
+    "fiskheroes:equipment_wheel": {
+      "color": "0xE2062B"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:spider_man_raimi",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_raimi_youthpastor_layer1",
+    "layer2": "fiskheroes:spider_man_raimi_youthpastor_layer2"
+  },
+  "itemIcons": {
+    "HELMET": "spider_man_raimi_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_stark_layer1",
+    "layer2": "fiskheroes:spider_man_stark_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_upgraded_layer1",
+    "layer2": "fiskheroes:spider_man_upgraded_layer2"
+  },
+  "itemIcons": {
+    "HELMET": "spider_man_stark_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  }
+}
+{
+  "parent": "fiskheroes:spider_man",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_webb_layer1",
+    "layer2": "fiskheroes:spider_man_webb_layer2"
+  },
+  "custom": {
+    "fiskheroes:equipment_wheel": {
+      "color": "0x00102A"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:spider_man_webb",
+  "resources": {
+    "layer1": "fiskheroes:spider_man_webb_tasm1_layer1",
+    "layer2": "fiskheroes:spider_man_webb_tasm1_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:spodermen_layer1",
+    "layer2": "fiskheroes:spodermen_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_layer1",
+    "layer2": "fiskheroes:the_flash_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_gold",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:the_flash_s1",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_earthx_layer1",
+    "layer2": "fiskheroes:the_flash_earthx_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_hunter_layer1",
+    "layer2": "fiskheroes:the_flash_hunter_layer2"
+  },
+  "itemIcons": {
+    "HELMET": "the_flash_jay_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "%s_2",
+    "BOOTS": "%s_3"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_gold",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_jay_layer1",
+    "layer2": "fiskheroes:the_flash_jay_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_gold",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_jay_earth90_layer1",
+    "layer2": "fiskheroes:the_flash_jay_earth90_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_orange",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:the_flash",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_s1_layer1",
+    "layer2": "fiskheroes:the_flash_s1_layer2"
+  },
+  "custom": {
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "offset": 2.25
+    }
+  }
+}
+{
+  "parent": "fiskheroes:the_flash_s1",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_s2_layer1",
+    "layer2": "fiskheroes:the_flash_s2_layer2"
+  }
+}
+{
+  "parent": "fiskheroes:the_flash",
+  "resources": {
+    "layer1": "fiskheroes:the_flash_test_layer1",
+    "layer2": "fiskheroes:the_flash_test_layer2",
+    "layer3": "fiskheroes:the_flash_test_layer3"
+  },
+  "texture": {
+    "renderLayer": {
+      "LEGGINGS": "layer2",
+      "BOOTS": "layer3"
+    },
+    "default": "layer1"
+  },
+  "showModel": {
+    "head": ["HELMET"],
+    "headwear": ["HELMET"],
+    "body": ["CHESTPLATE"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:blur_red",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "chest": "fiskheroes:the_monitor_chest",
+    "pants": "fiskheroes:the_monitor_pants",
+    "boots": "fiskheroes:the_monitor_boots",
+    "cape": "fiskheroes:the_monitor_cape"
+  },
+  "texture": {
+    "renderLayer": {
+      "CHESTPLATE": "chest",
+      "LEGGINGS": "pants"
+    },
+    "default": "boots"
+  },
+  "showModel": {
+    "head": ["CHESTPLATE"],
+    "headwear": ["CHESTPLATE"],
+    "body": ["CHESTPLATE", "LEGGINGS"],
+    "rightArm": ["CHESTPLATE"],
+    "leftArm": ["CHESTPLATE"],
+    "rightLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"],
+    "leftLeg": ["CHESTPLATE", "LEGGINGS", "BOOTS"]
+  },
+  "fixHatLayer": ["CHESTPLATE"],
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 21
+    },
+    "fiskheroes:energy_projection": {
+      "color": "0xFF2300",
+      "anchor": "body",
+      "beams": [
+        {
+          "firstPerson": [0.0, 6.0, 0.0],
+          "offset": [0.0, 5.0, -4.0],
+          "size": [4.0, 4.0]
+        }
+      ],
+      "renderer": "fiskheroes:energy_projection",
+      "particleType": "fiskheroes:impact_energy_projection"
+    },
+    "fiskheroes:teleportation": {
+      "particles": "fiskheroes:breach"
+    },
+    "fiskheroes:telekinesis": {
+      "particles": "fiskheroes:telekinesis_monitor"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:the_rival_layer1",
+    "layer2": "fiskheroes:the_rival_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_red",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:ears": {
+      "applicable": ["HELMET"],
+      "angle": 20,
+      "inset": 0.075
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:the_tick_layer1",
+    "layer2": "fiskheroes:the_tick_layer2"
+  },
+  "custom": {
+    "fiskheroes:antennae": {
+      "applicable": ["HELMET"],
+      "angle": 90,
+      "offset": 0.125,
+      "segments": 8
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:trajectory_layer1",
+    "layer2": "fiskheroes:trajectory_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_yellow",
+      "conditionals": ["vars:SPEEDING"]
+    },
+    "fiskheroes:trail|blue": {
+      "type": "fiskheroes:lightning_trajectory",
+      "conditionals": ["vars:BLUE"]
+    },
+    "fiskheroes:chest": {
+      "applicable": ["CHESTPLATE"],
+      "extrude": 1,
+      "offset": 1
+    }
+  },
+  "vars": {
+    "SPEEDING": "entity.getData('fiskheroes:speeding') && entity.getData('fiskheroes:speed') <= 4",
+    "BLUE": "entity.getData('fiskheroes:speeding') && entity.getData('fiskheroes:speed') > 4"
+  }
+}
+{
+  "parent": "fiskheroes:hero_basic",
+  "resources": {
+    "layer1": "fiskheroes:vision_layer1",
+    "layer2": "fiskheroes:vision_layer2",
+    "cape": "fiskheroes:vision_cape",
+    "stone": "fiskheroes:vision_stone"
+  },
+  "custom": {
+    "fiskheroes:cape": {
+      "applicable": ["CHESTPLATE"],
+      "texture": "cape",
+      "length": 24
+    },
+    "fiskheroes:invisibility": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "opacityMin": 0.5,
+      "opacityMax": 1.0,
+      "data": "fiskheroes:intangibility_timer"
+    },
+    "fiskheroes:charged_beam": {
+      "color": "0xFFFF6D",
+      "anchor": "head",
+      "beams": [
+        {
+          "firstPerson": [0.0, -6.15, 0.0],
+          "offset": [0.0, -6.15, -4.0],
+          "size": [1.0, 0.5]
+        }
+      ],
+      "renderer": "fiskheroes:charged_beam",
+      "particleType": "fiskheroes:impact_charged_beam"
+    },
+    "fiskheroes:overlay": {
+      "applicable": ["HELMET"],
+      "texture": ["null", "stone"],
+      "opacity": 1.0,
+      "data": "fiskheroes:beam_charge"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:vision",
+  "resources": {
+    "layer1": "fiskheroes:vision_sword_layer1",
+    "layer2": "fiskheroes:vision_sword_layer2",
+    "cape": "fiskheroes:vision_sword_cape",
+    "stone": "fiskheroes:vision_sword_stone"
+  },
+  "custom": {
+    "fiskheroes:charged_beam": {
+      "color": "0x40E7F9",
+      "anchor": "head",
+      "beams": [
+        {
+          "firstPerson": [0.0, -6.15, 0.0],
+          "offset": [0.0, -6.15, -4.0],
+          "size": [1.0, 0.5]
+        }
+      ],
+      "renderer": "fiskheroes:charged_beam",
+      "particleType": "fiskheroes:impact_charged_beam"
+    }
+  }
+}
+{
+  "parent": "fiskheroes:hero_speedster",
+  "resources": {
+    "layer1": "fiskheroes:zoom_layer1",
+    "layer2": "fiskheroes:zoom_layer2",
+    "eyes": "fiskheroes:zoom_eyes"
+  },
+  "lights": {
+    "renderLayer": {
+      "HELMET": "eyes"
+    },
+    "default": "null"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_zoom",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:zoom",
+  "resources": {
+    "eyes": "fiskheroes:zoom_concept_eyes"
+  },
+  "lights": {
+    "renderLayer": {
+      "HELMET": {
+        "vars:SPEEDING": {
+          "true": "eyes"
+        }
+      }
+    },
+    "default": "null"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "zoom_1",
+    "LEGGINGS": "zoom_2",
+    "BOOTS": "zoom_3"
+  },
+  "custom": {
+    "fiskheroes:vibration": {
+      "applicable": ["HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"],
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:zoom",
+  "resources": {
+    "layer1": "fiskheroes:zoom_death_layer1",
+    "layer2": "fiskheroes:zoom_death_layer2"
+  },
+  "lights": {
+    "default": "null"
+  },
+  "itemIcons": {
+    "HELMET": "%s_0",
+    "CHESTPLATE": "%s_1",
+    "LEGGINGS": "zoom_2",
+    "BOOTS": "zoom_3"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_red",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
+{
+  "parent": "fiskheroes:zoom",
+  "resources": {
+    "layer1": "fiskheroes:zoom_pink_layer1",
+    "layer2": "fiskheroes:zoom_pink_layer2"
+  },
+  "custom": {
+    "fiskheroes:trail": {
+      "type": "fiskheroes:lightning_zoom_pink",
+      "conditionals": ["vars:SPEEDING"]
+    }
+  }
+}
